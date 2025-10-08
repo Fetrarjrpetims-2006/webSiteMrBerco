@@ -1,0 +1,11 @@
+nohup: ignoring input
+
+> backend@1.0.0 start
+> node index.js
+
+ENV DEBUG: CLOUDINARY_CLOUD_NAME= dhniqp13v
+ENV DEBUG: CLOUD_NAME= undefined
+ENV DEBUG: CLOUDINARY_URL= [present]
+ℹ️ CLOUDINARY_CLOUD_NAME (lu) = dhniqp13v
+🔒 ADMIN mode enabled (suppression protégée par token)
+🚀 Serveur backend en cours d'exécution sur http://localhost:3000

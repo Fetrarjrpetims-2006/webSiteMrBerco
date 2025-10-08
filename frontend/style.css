@@ -1,0 +1,297 @@
+/* ===== Couleurs principales ===== */
+:root {
+    --primary-color: #1E90FF;   /* Bleu marina */
+    --secondary-color: #87CEEB; /* Bleu ciel */
+    --background-color: #f0f8ff; /* Fond doux */
+    --text-color: #333;
+    --button-glow: #00BFFF;      /* Glow pour hover boutons */
+    --card-bg: #ffffff;           /* Fond cartes */
+    --form-bg: rgba(255,255,255,0.95); /* Form Upload */
+}
+body{
+    background-image: url("pexels-souvenirpixels-417074.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height:100vh;
+    height: 100%;
+}
+
+/* ===== Reset ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+/* body { font-family:'Poppins',sans-serif; background: var(--background-color); color: var(--text-color); transition: all 0.5s; display:flex; flex-direction:column; min-height:100vh; } */
+
+/* ===== Header ===== */
+header {
+    display:flex; flex-direction:column; align-items:center; padding:20px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.15);
+    position:sticky; top:0; z-index:100;
+    animation: headerGlow 6s ease-in-out infinite alternate;
+}
+/* @keyframes headerGlow {
+    0% { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); }
+    50% { background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); }
+    100% { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); }
+} */
+header h1 {
+    font-size:2em; color:#fff; margin-bottom:15px; text-align:center;
+    animation: titleColor 5s ease-in-out infinite alternate;
+}
+@keyframes titleColor {
+    0% { color:#fff; }
+    50% { color:#FFD700; } /* Doré */
+    100% { color:#fff; }
+}
+
+/* ===== Search Bar ===== */
+.search-bar {
+    display:flex; width:100%; max-width:450px;
+}
+.search-bar input {
+    flex:1; padding:10px 15px; border-radius:8px 0 0 8px;
+    border:1px solid #ccc; outline:none; transition: all 0.3s ease-in-out;
+}
+.search-bar input:hover, .search-bar input:focus {
+    border-color: var(--secondary-color);
+    box-shadow:0 0 12px rgba(30,144,255,0.4);
+}
+.search-bar button {
+    padding:10px 15px; border:none; border-radius:0 8px 8px 0;
+    background: var(--secondary-color); color:#fff; font-weight:bold; cursor:pointer;
+    transition: all 0.3s ease-in-out;
+}
+.search-bar button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 15px var(--button-glow);
+    background: linear-gradient(45deg,var(--button-glow),var(--primary-color));
+}
+
+/* ===== Navigation ===== */
+nav { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:20px 0; }
+nav button {
+    padding:10px 20px; border:none; border-radius:10px;
+    background:linear-gradient(45deg,var(--primary-color),var(--secondary-color));
+    color:#fff; font-weight:bold; cursor:pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.4s;
+}
+nav button:hover {
+    transform:translateY(-3px) scale(1.05);
+    box-shadow:0 6px 20px rgba(30,144,255,0.4);
+    background:linear-gradient(45deg,var(--button-glow),var(--primary-color));
+}
+
+/* ===== Onglets ===== */
+.onglet { display:none; }
+.onglet.active { display:block; }
+
+/* ===== Main Content ===== */
+main { flex:1; padding:25px;padding-bottom: 100px; }
+main p { font-size:1em; animation:fadeIn 0.8s ease-in; text-align:center; }
+@keyframes fadeIn { from {opacity:0; transform:translateY(15px);} to {opacity:1; transform:translateY(0);} }
+
+/* ===== Cartes ===== */
+.cartes {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:20px;
+    justify-items:center;
+    margin-top:25px;
+}
+.carte {
+    background-color: var(--card-bg); color: var(--text-color);
+    border-radius:15px; padding:20px; width:100%; max-width:260px;
+    box-shadow:0 6px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align:center; cursor:pointer;
+}
+.carte h3 { margin-bottom:12px; color:var(--primary-color); font-size:1.1em; }
+.carte p { font-size:0.95em; margin-bottom:15px; }
+
+/* ===== Boutons des cartes ===== */
+.carte button {
+    padding: 8px 18px; border:none; border-radius:8px;
+    background: linear-gradient(45deg,var(--primary-color),var(--secondary-color));
+    color:#fff; font-weight:bold; cursor:pointer; transition: all 0.3s ease-in-out;
+}
+.carte button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:0 0 15px var(--button-glow);
+    background: linear-gradient(45deg,var(--button-glow),var(--primary-color));
+}
+
+/* ===== Section Upload harmonisée et responsive ===== */
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto;
+    padding: 25px;
+    width: 90%;
+    max-width: 500px;
+    background: transparent;
+
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Titre de la section */
+.upload-section h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-size: 1.5em;
+    animation: uploadTitleGlow 4s ease-in-out infinite alternate;
+}
+@keyframes uploadTitleGlow {
+    0% { color: var(--primary-color); }
+    50% { color: var(--button-glow); }
+    100% { color: var(--primary-color); }
+}
+
+/* Formulaire Upload */
+.upload-section form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+}
+
+.upload-section input[type="file"] {
+    flex: 1;
+    min-width: 120px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.upload-section input[type="file"]:hover,
+.upload-section input[type="file"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 12px rgba(30,144,255,0.5);
+}
+
+/* Bouton Upload */
+.upload-section button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg,var(--primary-color),var(--secondary-color));
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.upload-section button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 15px var(--button-glow);
+    background: linear-gradient(45deg,var(--button-glow),var(--primary-color));
+}
+
+/* Message Upload */
+#uploadMessage {
+    margin-top: 12px;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Progress bar */
+.progress {
+    width: 100%;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 10px;
+    height: 12px;
+}
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--button-glow));
+    width: 0%;
+    transition: width 0.2s ease;
+}
+
+#uploadErrors { margin-top:8px; color:#ffdddd; font-weight:bold; }
+
+/* ===== Responsive inférieur à 400px ===== */
+@media screen and (max-width: 399px) {
+    .upload-section {
+        padding: 15px;
+        width: 95%;
+        background-color: transparent;
+        backdrop-filter: blur(12px);
+    border-radius: 15px; /* bleu ciel vers blanc */
+    }
+    .upload-section form {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .upload-section input[type="file"],
+    .upload-section button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .upload-section h2 {
+        font-size: 1.2em;
+    }
+}
+
+
+
+/* ===== Footer ===== */
+/* Footer fixe en bas */
+footer {
+    position: fixed;   /* fixe en bas */
+    bottom: 0;         /* au bas de l'écran */
+    left: 0;
+    width: 100%;       /* prend toute la largeur */
+    padding: 15px 15px; /* hauteur pour PC */
+    text-align: center;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    color: #fff;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.15);
+    animation: footerGlow 6s ease-in-out infinite alternate;
+    z-index: 999;      /* pour rester au-dessus du contenu */
+}
+
+/* Pour que le contenu ne soit pas caché derrière le footer */
+main {
+    padding-bottom: 100px; /* ajuster selon la hauteur du footer */
+}
+
+
+footer:hover { box-shadow:0 -6px 25px rgba(0,0,0,0.2); }
+
+/* ===== Responsive complet ===== */
+@media screen and (max-width:399px){
+    header h1{font-size:1em;}
+    .search-bar{flex-direction:column;}
+    .search-bar input{width:100%; margin-bottom:5px;}
+    nav button{padding:6px 10px;font-size:0.7em;}
+    main{padding:10px;}
+    .cartes{grid-template-columns:1fr; gap:10px;}
+    .carte{padding:12px; width:95%;}
+    .upload-section{padding:15px;}
+    .upload-section form{flex-direction:column; gap:8px;}
+}
+@media screen and (min-width:400px) and (max-width:767px){
+    .cartes{grid-template-columns:1fr 1fr; gap:15px;}
+    .carte{width:45%;}
+    .upload-section form{flex-direction:row; flex-wrap:wrap;}
+}
+@media screen and (min-width:768px) and (max-width:1023px){
+    .cartes{grid-template-columns:repeat(3,1fr); gap:20px;}
+    .carte{width:30%;}
+}
+@media screen and (min-width:1024px){
+    .cartes{grid-template-columns:repeat(3,1fr); gap:25px;}
+}

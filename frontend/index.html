@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MySite</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Bienvenue sur MySite ! Sélectionnez un onglet pour commencer.</h1>
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher sur Google...">
+      <button onclick="rechercher()">🔍</button>
+    </div>
+  </header>
+
+  <nav>
+    <button onclick="ouvrirOnglet('accueil')">Accueil</button>
+    <button onclick="ouvrirOnglet('videos')">Vidéos</button>
+    <button onclick="ouvrirOnglet('manage')">Manage</button>
+    <button onclick="ouvrirOnglet('images')">Images</button>
+    <button onclick="ouvrirOnglet('docs')">Docs</button>
+  </nav>
+
+  <main id="contenu">
+    <section id="accueil" class="onglet active">
+      <div class="cartes">
+        <div class="carte">
+          <h3>Vidéo 1</h3>
+          <p>Description courte de la vidéo.</p>
+          <button>Voir</button>
+        </div>
+        <div class="carte">
+    
+    <!-- Manage section -->
+    <section id="manage" class="onglet">
+      <h2>Gestion des fichiers</h2>
+      <p>URL publique du site (si configurée) : <span id="siteUrlDisplay">-</span></p>
+      <div id="admin-login" style="margin-bottom:12px">
+        <input id="adminTokenInputManual" placeholder="Token admin (ou utilisez connexion)" style="width:60%">
+        <button id="saveAdminTokenManual">Enregistrer token (sessionStorage)</button>
+      </div>
+      <div id="admin-session" style="margin-bottom:12px">
+        <input id="adminTokenInput" placeholder="Token admin (connexion)" style="width:60%">
+        <button id="adminLoginBtn">Connexion admin</button>
+        <button id="adminLogoutBtn" style="display:none">Se déconnecter</button>
+        <span id="adminStatus" style="margin-left:8px"></span>
+      </div>
+      <div id="manage-list"></div>
+    </section>
+          <h3>Image 1</h3>
+          <p>Description courte de l'image.</p>
+          <button>Voir</button>
+        </div>
+        <div class="carte">
+          <h3>Document 1</h3>
+          <p>Description courte du document.</p>
+          <button>Ouvrir</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos" class="onglet">
+      <div class="cartes" id="uploaded-videos"></div>
+    </section>
+    <section id="images" class="onglet">
+      <div class="cartes" id="uploaded-images"></div>
+    </section>
+    <section id="docs" class="onglet">
+      <div class="cartes" id="uploaded-docs"></div>
+    </section>
+
+    <section class="upload-section">
+      <h2>Ajouter un fichier</h2>
+      <form id="uploadForm">
+        <input type="file" name="fichier" required>
+        <button type="submit">Uploader</button>
+        <div class="progress" id="uploadProgress" style="display:none">
+          <div class="progress-bar" id="uploadProgressBar" style="width:0%"></div>
+        </div>
+        <div id="uploadErrors" role="status" aria-live="polite"></div>
+      </form>
+      <p id="uploadMessage"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 MySite. Tous droits réservés.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
